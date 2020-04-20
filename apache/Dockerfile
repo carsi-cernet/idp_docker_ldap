@@ -14,6 +14,7 @@ VOLUME [ "/sys/fs/cgroup" ]
 RUN yum clean all && yum -y update; \
 yum -y install mod_ssl httpd; \
 yum -y update; \
-systemctl enable httpd.service;
+systemctl enable httpd.service; \
+timedatectl set-timezone Asia/Shanghai
 
 CMD ["/usr/sbin/init"]
