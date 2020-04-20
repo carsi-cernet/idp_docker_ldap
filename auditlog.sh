@@ -1,2 +1,2 @@
 rm -rf /opt/idp_docker_ldap/apache/html/auditlog/auditlog-`date -d -24hours +%Y-%m-%d-%H`.log
-grep `date -d -1hours +%Y-%m-%dT%H` /opt/idp_dockerized_ldap/shibidp/shiblog/idp-audit.log > /opt/idp_docker_ldap/apache/html/auditlog/auditlog-`date -d -1hours +%Y-%m-%d-%H`.log
+grep `date -d -1hours +%Y-%m-%dT%H` /opt/idp_docker_ldap/shibidp/shiblog/idp-audit.log > /opt/idp_docker_ldap/apache/html/auditlog/auditlog-`date -d -1hours +%Y-%m-%d-%H`.log
