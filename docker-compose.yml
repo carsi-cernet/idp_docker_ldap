@@ -1,0 +1,29 @@
+version: '3'
+services:
+    shibidp:
+        build: ./shibidp
+        volumes:
+            - "./shibidp/shiblog:/opt/shibboleth-idp/logs"
+            - "./shibidp/tomcatlog:/var/log/tomcat"
+            - "/etc/timezone:/etc/timezone"
+            - "/etc/localtime:/etc/localtime"
+        expose:
+            - "8009"
+        privileged: true
+        container_name: idp_docker_3.4.6
+    apache:
+        build: ./apache
+        ports:
+            - "443:443"
+        volumes:
+            - "./apache/log:/var/log/httpd"
+            - "./apache/conf:/etc/httpd/conf"
+            - "./apache/conf.d:/etc/httpd/conf.d"
+            - "./apache/html:/var/www/html"
+            - "./apache/certificate:/etc/httpd/certificate"
+            - "/etc/timezone:/etc/timezone"
+            - "/etc/localtime:/etc/localtime"
+        privileged: true
+        links:
+            - shibidp
+        container_name: httpd_docker_2.4
