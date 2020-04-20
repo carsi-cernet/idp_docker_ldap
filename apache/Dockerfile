@@ -11,7 +11,9 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME [ "/sys/fs/cgroup" ]
 
-RUN yum -y install mod_ssl httpd; \
+RUN yum clean all && yum -y update; \
+yum -y install mod_ssl httpd; \
+yum -y update; \
 systemctl enable httpd.service;
 
 CMD ["/usr/sbin/init"]

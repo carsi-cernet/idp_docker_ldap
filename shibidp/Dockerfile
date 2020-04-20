@@ -13,7 +13,9 @@ VOLUME [ "/sys/fs/cgroup" ]
 
 COPY idp3config /opt/inst/idp3config/
 
-RUN yum -y install mod_ssl java-1.8.0-openjdk java-1.8.0-openjdk-devel tomcat wget crontabs;\
+RUN yum clean all && yum -y update; \
+yum -y install mod_ssl java-1.8.0-openjdk java-1.8.0-openjdk-devel tomcat wget crontabs;\
+yum clean all; \
 echo "" >> /etc/profile; \
 echo "export JAVA_HOME=/etc/alternatives/java_sdk_1.8.0" >> /etc/profile; \
 echo "export PATH=$PATH:$JAVA_HOME/bin" >> /etc/profile; \
